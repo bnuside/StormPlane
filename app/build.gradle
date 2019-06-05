@@ -1,18 +1,29 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 26
-    buildToolsVersion '26.0.3'
+    compileSdkVersion 28
+    buildToolsVersion '28.0.3'
 
     defaultConfig {
-        applicationId "com.hurteng.stormplane"
+        applicationId "sele.space.plane.game"
         minSdkVersion 16
-        targetSdkVersion 26
+        targetSdkVersion 28
+    }
+
+    signingConfigs {
+        release {
+            storeFile file('/Users/side/MyAndroidKeyStore')
+            storePassword '2015doudou$'
+            keyAlias 'plane'
+            keyPassword 'longlyman#'
+
+        }
     }
 
     buildTypes {
         release {
             minifyEnabled true
+            signingConfig signingConfigs.release
             proguardFiles 'proguard-android.txt', 'proguard-project.txt'
         }
     }
