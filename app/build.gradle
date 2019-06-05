@@ -16,15 +16,28 @@ android {
             storePassword '2015doudou$'
             keyAlias 'plane'
             keyPassword 'longlyman#'
-
+        }
+        debug {
+            storeFile file('debug.keystore')
+            storePassword 'android'
+            keyAlias 'debug'
+            keyPassword 'android'
         }
     }
 
     buildTypes {
         release {
             minifyEnabled true
+            debuggable false
             signingConfig signingConfigs.release
             proguardFiles 'proguard-android.txt', 'proguard-project.txt'
+        }
+        debug {
+            minifyEnabled false
+            shrinkResources false
+            debuggable true
+            signingConfig signingConfigs.debug
+            applicationIdSuffix '.debug'
         }
     }
 }
@@ -34,5 +47,5 @@ tasks.withType(JavaCompile) {
 }
 
 dependencies {
-    compile 'com.android.support:support-v4:18.0.0'
+    implementation 'com.android.support:support-v4:28.0.0'
 }
